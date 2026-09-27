@@ -1,0 +1,4 @@
+streamlit>=1.50,<2
+PyMuPDF>=1.26,<2
+azure-cognitiveservices-speech>=1.45,<2
+imageio-ffmpeg>=0.6,<1
