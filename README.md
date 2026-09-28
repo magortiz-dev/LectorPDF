@@ -11,7 +11,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Introduce la **clave** y la **región** del recurso Azure Speech en la interfaz, o copia `.streamlit/secrets.toml.example` como `.streamlit/secrets.toml` y completa los valores. No subas ese último archivo a un repositorio. En Streamlit Community Cloud, configura los mismos secretos desde la administración de la app. Azure puede cobrar por los caracteres sintetizados según tu plan.
+La app lee `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION` de los secretos de Streamlit; no pide credenciales en la interfaz. Para usarla en local, copia `.streamlit/secrets.toml.example` como `.streamlit/secrets.toml` y completa los valores. No subas ese último archivo a un repositorio. En Streamlit Community Cloud, configura los mismos nombres desde la administración de la app. Azure puede cobrar por los caracteres sintetizados según tu plan.
 
 ## Uso
 

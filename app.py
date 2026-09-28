@@ -104,22 +104,16 @@ st.download_button("Descargar texto depurado (.txt)", text.encode("utf-8"),
 st.subheader("3. Elige voz y genera el audio")
 voice_label = st.selectbox("Voz", list(VOICES))
 rate = st.slider("Velocidad de lectura", -30, 40, 0, 5, format="%d %%")
-with st.expander("Conexión a Azure Speech", expanded=True):
-    st.caption("Puedes usar las mismas credenciales de Azure Speech que en Doblador Vídeos. "
-               "Se usan durante esta sesión; no se guardan en el proyecto.")
-    try:
-        default_key = st.secrets.get("AZURE_SPEECH_KEY", "")
-        default_region = st.secrets.get("AZURE_SPEECH_REGION", "")
-    except FileNotFoundError:
-        default_key, default_region = "", ""
-    key = st.text_input("Clave de Azure Speech", value=default_key, type="password")
-    region = st.text_input("Región de Azure Speech (por ejemplo, westeurope)",
-                           value=default_region)
+try:
+    key = st.secrets.get("AZURE_SPEECH_KEY", "")
+    region = st.secrets.get("AZURE_SPEECH_REGION", "")
+except FileNotFoundError:
+    key, region = "", ""
 
 audio_identity = hashlib.sha256((text + VOICES[voice_label] + str(rate)).encode()).hexdigest()
 if st.button("Generar MP3", type="primary", use_container_width=True):
     if not key.strip() or not region.strip():
-        st.error("Introduce la clave y la región de Azure Speech.")
+        st.error("Configura AZURE_SPEECH_KEY y AZURE_SPEECH_REGION en los secretos de Streamlit.")
     else:
         bar = st.progress(0, text="Generando audio…")
         try:
