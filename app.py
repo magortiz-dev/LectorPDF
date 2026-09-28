@@ -18,7 +18,7 @@ h1 {font-size: 3rem !important; letter-spacing: -0.04em;}
 div[data-testid="stButton"] button[kind="primary"] {border-radius: 10px; font-weight: 700;}
 </style>""", unsafe_allow_html=True)
 st.title("🔊 Lector PDF")
-st.caption("Del documento al paseo · lectura íntegra, con una voz a tu gusto")
+st.caption("Por Miguel Ángel Gómez Ortiz")
 
 uploaded = st.file_uploader("Sube un documento PDF", type="pdf")
 if uploaded is None:
